@@ -10,11 +10,14 @@ client.once('ready', () => {
 
 client.on('message', message => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
-
+    /**
     if(message.content.slice(prefix.length) === 'who is the coolest'){
         message.channel.send('Why cc ofc');
     }
-
+    */
+    if(message.content === 'coolest'){
+    message.channel.send('Why cc ofc');
+    }
     else if(message.content.slice(prefix.length) === 'PasteBot show me your brain'){
         message.channel.send('https://myanimelist.net/animelist/PasteLord&view=tile&status=2');
     }

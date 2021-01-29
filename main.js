@@ -24,9 +24,15 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     if(command === 'ping'){
-        message.channel.send('pong2!');
+        message.channel.send('pong!');
     } else if(command === 'gme'){
         message.channel.send('YOLO');
+    } else if(command === 'a4l'){
+        if((Math.floor(Math.random() * 10) + 1) > 5){
+            message.channel.send('ATAGO FOR LIFE!');
+        }else{
+            message.channel.send('You uncultered swine, cc >> atago');
+        }
     }
 
 });

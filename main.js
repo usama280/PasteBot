@@ -33,7 +33,7 @@ client.on('message', message => {
         }else{
             message.channel.send('You uncultered swine, cc >> atago');
         }
-    } else if(command === 'ccMusicRecc'){
+    } else if(command === 'ccmusicrecc'){
         var x = Math.floor(Math.random() * 4);
         if(x === 0){
             message.channel.send('https://www.youtube.com/watch?v=ZmDBbnmKpqQ');

@@ -3,7 +3,8 @@ module.exports = {
     description: "this is cc's recc music",
     execute(message, args){
         var x = Math.floor(Math.random() * 4);
-       
+        message.channel.send('Your mystery number is: ' + x);
+
         if(x === 0){
             message.channel.send('https://www.youtube.com/watch?v=ZmDBbnmKpqQ');
         }else if (x === 1){

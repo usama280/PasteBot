@@ -21,8 +21,14 @@ client.on('message', message => {
     
     if(!message.content.startsWith(prefix) || message.author.bot) return;
     
-    if(message.content.slice(prefix.length) === 'who is the coolest'){
+    if(message.content.slice(prefix.length) == 'who is the coolest'){
         message.channel.send('Why cc ofc');
+    } else if(message.content.slice(prefix.length) == 'add me to the test role'){
+        message.channel.send('Say the magic word :)');
+        if(message.content.slice(prefix.length) == 'please'){
+            message.channel.send('You cheeky bastard, fine');
+            message.member.roles.add('805190796508790784');
+        }
     }
     
     
@@ -42,7 +48,7 @@ client.on('message', message => {
         client.commands.get('ccmusic').execute(message, args);
     } else if(command === 'testrole'){
         client.commands.get('test').execute(message, args);
-    }  
+    } 
 
 });
 

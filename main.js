@@ -40,7 +40,9 @@ client.on('message', message => {
         client.commands.get('a4l').execute(message, args);
     } else if(command === 'ccmusicrecc'){
         client.commands.get('ccmusic').execute(message, args);
-    } 
+    } else if(command === 'testrole'){
+        client.commands.get('test').execute(message, args);
+    }  
 
 });
 

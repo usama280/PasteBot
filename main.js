@@ -37,7 +37,11 @@ client.on('message', message => {
     } else if(command === 'gme'){
         message.channel.send('YOLO');
     } else if(command === 'a4l'){
-        client.commands.get('a4l').execute(message, args);
+        if((Math.floor(Math.random() * 10) + 1) > 8){
+            message.channel.send('ATAGO FOR LIFE!!!');
+        }else{
+            message.channel.send('You uncultered swine, cc >> atago (taco)');
+        }
     } else if(command === 'ccmusicrecc'){
         client.commands.get('ccmusic').execute(message, args);
     } 

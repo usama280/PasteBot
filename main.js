@@ -4,6 +4,17 @@ const client = new Discord.Client();
 
 const prefix = "-";
 
+const fs = require('fs');
+
+client.commands = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+for(const file of commandFiles){
+    const command = require(`./commands/${file}`);
+
+    client.commands.set(command.name, command);
+}
+
 client.once('ready', () => {
     console.log('PasteBot is online!');
 });
@@ -24,7 +35,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     if(command === 'ping'){
-        message.channel.send('pong!');
+        client.command.get('ping').execute(message, args);
     } else if(command === 'gme'){
         message.channel.send('YOLO');
     } else if(command === 'a4l'){

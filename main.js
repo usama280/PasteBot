@@ -2,9 +2,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
  
 const prefix = '-';
- 
-const fs = require('fs');
- 
+
+const fs = require('fs'); 
 client.commands = new Discord.Collection();
  
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -34,7 +33,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     if(command === 'ping'){
-        client.command.get('ping').execute(message, args);
+        client.commands.get('ping').execute(message, args);
     } else if(command === 'gme'){
         message.channel.send('YOLO');
     } else if(command === 'a4l'){

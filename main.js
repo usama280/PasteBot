@@ -4,6 +4,7 @@ const client = new Discord.Client();
 const prefix = '-';
 
 const fs = require('fs'); 
+const { waitForDebugger } = require('inspector');
 client.commands = new Discord.Collection();
  
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -25,10 +26,9 @@ client.on('message', message => {
         message.channel.send('Why cc ofc');
     } else if(message.content.slice(prefix.length) == 'add me to the test role'){
         message.channel.send('Say the magic word :)');
-        if(message.content.slice(prefix.length) == 'please'){
-            message.channel.send('You cheeky bastard, fine');
-            message.member.roles.add('805190796508790784');
-        }
+    } else if(message.content.slice(prefix.length) == 'please'){
+        message.channel.send('You cheeky bastard, fine');
+        message.member.roles.add('805190796508790784').catch(console.error);
     }
     
     

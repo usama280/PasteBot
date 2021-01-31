@@ -53,8 +53,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     if(command === 'ping'){
-        import {ping} from './ping';
-        message.channel.send(ping);
+        client.commands.get('ping').execute(message, args);
     } else if(command === 'gme'){
         message.channel.send('YOLO');
     } else if(command === 'a4l'){

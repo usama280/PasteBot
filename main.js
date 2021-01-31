@@ -22,8 +22,6 @@ client.on('message', message => {
     if(message.content.toLowerCase().includes("who is the coolest")){
         message.channel.send('Why cc ofc');
     } else if(message.content.toLowerCase().includes('add me to the test role')){
-        //message.channel.send('Say the magic word :)');
-        
     let filter = m => m.author.id === message.author.id
         message.channel.send('Say the magic word :)').then(() => {
         message.channel.awaitMessages(filter, {
@@ -44,11 +42,6 @@ client.on('message', message => {
             message.channel.send('Times up kiddo :>');
         });
     })
-
-
-        // const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {maxMatches: 1, time: 10000 });
-        // console.log(collector)
-        // collector.on('collect', message => {
             
     } else if(message.content.toLowerCase().includes('pastebot show me your brain')){
         message.channel.send('https://myanimelist.net/animelist/PasteLord&view=tile&status=2');
@@ -60,7 +53,8 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     if(command === 'ping'){
-        client.commands.get('ping').execute(message, args);
+        import {ping} from './ping';
+        message.channel.send(ping);
     } else if(command === 'gme'){
         message.channel.send('YOLO');
     } else if(command === 'a4l'){

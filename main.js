@@ -25,7 +25,7 @@ client.on('message', message => {
         //message.channel.send('Say the magic word :)');
         
     let filter = m => m.author.id === message.author.id
-        message.channel.send(`Are you sure to delete all data? \`YES\` / \`NO\``).then(() => {
+        message.channel.send('Say the magic word :)').then(() => {
         message.channel.awaitMessages(filter, {
           max: 1,
           time: 10000,
@@ -41,7 +41,7 @@ client.on('message', message => {
           }
         })
         .catch(collected => {
-            message.channel.send('Timeout');
+            message.channel.send('Times up kiddo :>');
         });
     })
 

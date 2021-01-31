@@ -18,7 +18,7 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
-    let authId = 0; 
+    let authId; 
     
     if(message.content.toLowerCase().includes("who is the coolest")){
         message.channel.send('Why cc ofc');

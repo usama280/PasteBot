@@ -24,9 +24,18 @@ client.on('message', message => {
     } else if(message.content.toLowerCase().includes('add me to the test role')){
         message.channel.send('Say the magic word :)');
         
-        const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {maxMatches: 1, time: 10000 });
-        console.log(collector)
-        collector.on('collect', message => {
+        message.channel.awaitMessages(filter, {
+            max: 1,
+            time: 10000,
+            errors: ['time']
+          })
+          .then(message => {
+            message = message.first()
+
+
+        // const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {maxMatches: 1, time: 10000 });
+        // console.log(collector)
+        // collector.on('collect', message => {
             if (message.content.toLowerCase().includes('please')) {
                 message.channel.send('You cheeky bastard, fine');
                 message.member.roles.add('805190796508790784').catch(console.error);

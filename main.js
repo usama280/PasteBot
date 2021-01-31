@@ -34,9 +34,6 @@ client.on('message', message => {
                 message.channel.send("WRONG! You actually thought bro...");
             }
         })
-    } else if(authId == message.author.id && message.content.toLowerCase().includes('please') ){
-            message.channel.send('You cheeky bastard, fine');
-            message.member.roles.add('805190796508790784').catch(console.error);
     } else if(message.content.toLowerCase().includes('pastebot show me your brain')){
         message.channel.send('https://myanimelist.net/animelist/PasteLord&view=tile&status=2');
     }

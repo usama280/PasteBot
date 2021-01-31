@@ -18,23 +18,22 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
+    let authId = 0; 
     
     if(message.content.toLowerCase().includes("who is the coolest")){
         message.channel.send('Why cc ofc');
+    } else if(message.content.toLowerCase().includes('add me to the test role')){
+        message.channel.send('Say the magic word :)');
+        authId = message.author.id;
+    } else if(authId == message.author.id && message.content.toLowerCase().includes('please') ){
+            message.channel.send('You cheeky bastard, fine');
+            message.member.roles.add('805190796508790784').catch(console.error);
+    } else if(message.content.toLowerCase().includes('pastebot show me your brain')){
+        message.channel.send('https://myanimelist.net/animelist/PasteLord&view=tile&status=2');
     }
 
     if(!message.content.startsWith(prefix) || message.author.bot) return;
     
-    if(message.content.slice(prefix.length) == 'who is the coolest'){
-        message.channel.send('Why cc ofc');
-    } else if(message.content.slice(prefix.length).toLowerCase() == 'add me to the test role'){
-        message.channel.send('Say the magic word :)');
-    } else if(message.content.slice(prefix.length).toLowerCase() == 'please'){
-        message.channel.send('You cheeky bastard, fine');
-        message.member.roles.add('805190796508790784').catch(console.error);
-    } else if(message.content.slice(prefix.length).toLowerCase() === 'pasteBot show me your brain'){
-        message.channel.send('https://myanimelist.net/animelist/PasteLord&view=tile&status=2');
-    }
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 

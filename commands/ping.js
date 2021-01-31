@@ -1,3 +1,1 @@
-export const ping = function(){
-    return 'pong!';
-}
+export const ping = () => 'pong!';

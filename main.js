@@ -22,27 +22,34 @@ client.on('message', message => {
     if(message.content.toLowerCase().includes("who is the coolest")){
         message.channel.send('Why cc ofc');
     } else if(message.content.toLowerCase().includes('add me to the test role')){
-        message.channel.send('Say the magic word :)');
+        //message.channel.send('Say the magic word :)');
         
-        message.channel.awaitMessages(m => m.author.id === message.author.id, {
-            max: 1,
-            time: 10000,
-            errors: ['time']
-          })
-          .then(message => {
-            message = message.first()
+    let filter = m => m.author.id === message.author.id
+        message.channel.send(`Are you sure to delete all data? \`YES\` / \`NO\``).then(() => {
+        message.channel.awaitMessages(filter, {
+          max: 1,
+          time: 10000,
+          errors: ['time']
+        })
+        .then(message => {
+          message = message.first()
+          if (message.content.toLowerCase().includes('please')) {
+            message.channel.send('You cheeky bastard, fine');
+            message.member.roles.add('805190796508790784').catch(console.error);
+          } else {
+            message.channel.send("WRONG! You actually thought bro...");
+          }
+        })
+        .catch(collected => {
+            message.channel.send('Timeout');
+        });
+    })
 
 
         // const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {maxMatches: 1, time: 10000 });
         // console.log(collector)
         // collector.on('collect', message => {
-            if (message.content.toLowerCase().includes('please')) {
-                message.channel.send('You cheeky bastard, fine');
-                message.member.roles.add('805190796508790784').catch(console.error);
-            } else {
-                message.channel.send("WRONG! You actually thought bro...");
-            }
-        })
+            
     } else if(message.content.toLowerCase().includes('pastebot show me your brain')){
         message.channel.send('https://myanimelist.net/animelist/PasteLord&view=tile&status=2');
     }

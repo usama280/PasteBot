@@ -19,7 +19,7 @@ client.once('ready', () => {
 
 client.on('message', message => {
     
-    if(message.content.toLowerCase() == 'who is the coolest'){
+    if(message.content.toLowerCase().includes("who is the coolest")){
         message.channel.send('Why cc ofc');
     }
 
@@ -27,12 +27,12 @@ client.on('message', message => {
     
     if(message.content.slice(prefix.length) == 'who is the coolest'){
         message.channel.send('Why cc ofc');
-    } else if(message.content.slice(prefix.length) == 'add me to the test role'){
+    } else if(message.content.slice(prefix.length).toLowerCase() == 'add me to the test role'){
         message.channel.send('Say the magic word :)');
-    } else if(message.content.slice(prefix.length) == 'please'){
+    } else if(message.content.slice(prefix.length).toLowerCase() == 'please'){
         message.channel.send('You cheeky bastard, fine');
         message.member.roles.add('805190796508790784').catch(console.error);
-    } else if(message.content.slice(prefix.length) === 'PasteBot show me your brain'){
+    } else if(message.content.slice(prefix.length).toLowerCase() === 'pasteBot show me your brain'){
         message.channel.send('https://myanimelist.net/animelist/PasteLord&view=tile&status=2');
     }
     const args = message.content.slice(prefix.length).split(/ +/);

@@ -24,7 +24,7 @@ client.on('message', message => {
     } else if(message.content.toLowerCase().includes('add me to the test role')){
         message.channel.send('Say the magic word :)');
         
-        message.channel.awaitMessages(filter, {
+        message.channel.awaitMessages(m => m.author.id === message.author.id, {
             max: 1,
             time: 10000,
             errors: ['time']

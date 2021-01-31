@@ -30,7 +30,7 @@ client.on('message', message => {
             if (message.content.toLowerCase().includes('please')) {
                 message.channel.send('You cheeky bastard, fine');
                 message.member.roles.add('805190796508790784').catch(console.error);
-                break;
+                 break;
             } else {
                 message.channel.send("WRONG! You actually thought bro...");
                 break;

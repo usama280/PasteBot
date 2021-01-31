@@ -3,8 +3,7 @@ const client = new Discord.Client();
  
 const prefix = '-';
 
-const fs = require('fs'); 
-const { waitForDebugger } = require('inspector');
+const fs = require('fs');  
 client.commands = new Discord.Collection();
  
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -20,7 +19,7 @@ client.once('ready', () => {
 
 client.on('message', message => {
     
-    if(message.content == 'who is the coolest'){
+    if(message.content.toLowerCase() == 'who is the coolest'){
         message.channel.send('Why cc ofc');
     }
 

@@ -22,9 +22,10 @@ client.on('message', message => {
     if(message.content.toLowerCase().includes("who is the coolest")){
         message.channel.send('Why cc ofc');
     } else if(message.content.toLowerCase().includes('add me to the test role')){
-    let filter = m => m.author.id === message.author.id
+        let filter = m => m.author.id === message.author.id
         message.channel.send('Say the magic word :)').then(() => {
-        message.channel.awaitMessages(filter, {
+        
+            message.channel.awaitMessages(filter, {
           max: 1,
           time: 10000,
           errors: ['time']
@@ -62,7 +63,9 @@ client.on('message', message => {
         client.commands.get('ccmusic').execute(message, args);
     } else if(command === 'testrole'){
         client.commands.get('test').execute(message, args);
-    } 
+    } else if(command === 'embed'){
+        client.commands.get('embed').execute(message, args, Discord);
+    }
 
 });
 

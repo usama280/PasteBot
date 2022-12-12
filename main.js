@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
- 
+const openai = require('openai');
+
+openai.apiKey = "YOUR_OPENAI_API_KEY";
 const prefix = '-';
 
 const fs = require('fs');  
@@ -52,7 +54,21 @@ client.on('message', message => {
     
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
-
+    
+    if (command === 'chat') {
+        // Use the GPT-3 model to generate a response based on the user's input.
+        openai.Completion.create({
+            prompt: message.content,
+            temperature: 0.5,
+            max_tokens: 128,
+            n: 1,
+            stop: '\n',
+        }, function(error, response) {
+            // Send the response as a message to the user.
+            message.channel.send(response.choices[0].text);
+        });
+    }
+ 
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
     } else if(command === 'gme'){
